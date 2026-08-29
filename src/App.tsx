@@ -15,12 +15,12 @@ export default function App() {
   }
 
   return (
-    <div className="mx-auto max-w-xl px-5 py-10">
-      <header className="mb-8 text-center">
+    <div className="mx-auto max-w-4xl px-5 py-10">
+      <header className="mb-14 text-center">
         <h1 className="mb-2 text-3xl font-bold text-gray-900">
-          📅 Agendamentos
+          📅 Rodízio lavagem
         </h1>
-        <p className="text-gray-500">Gerencie as reservas do condomínio</p>
+        <p className="text-gray-500">Marque seu horário e ajude a economizar água — evitando que muitos apartamentos lavem roupa no mesmo dia.</p>
       </header>
 
       {error && (
