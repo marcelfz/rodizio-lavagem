@@ -25,3 +25,7 @@ dist-ssr
 
 # Environment variables
 **/.env.local
+
+# Firebase
+.firebaserc
+.firebase/

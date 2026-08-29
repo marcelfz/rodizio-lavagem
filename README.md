@@ -97,7 +97,7 @@ firebase init hosting
 firebase deploy --only hosting
 ```
 
-O Firebase devolve uma URL pública no formato `seu-app.web.app`. Para atualizar depois, basta repetir o `npm run build` + `firebase deploy --only hosting`.
+O Firebase devolve uma URL pública. Este projeto está publicado em: **https://rodizio-agua-e5154.web.app** — para atualizar, basta repetir o `npm run build` + `firebase deploy --only hosting`.
 
 ---
 
