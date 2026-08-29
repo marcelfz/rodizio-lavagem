@@ -1,4 +1,6 @@
 import { useBookings } from './hooks/useBookings'
+import { DayList } from './components/DayList'
+import { getRollingDays } from './utils/dates'
 
 export default function App() {
   const { bookings, loading, error, addBooking, removeBooking } = useBookings()
@@ -27,42 +29,12 @@ export default function App() {
         </div>
       )}
 
-      <div className="mb-5 flex justify-end">
-        <button
-          onClick={() => addBooking('2026-08-29', '101', 'Marcelo')}
-          className="rounded-lg bg-blue-600 px-5 py-2.5 font-semibold text-white shadow-md shadow-blue-500/20 transition hover:bg-blue-700"
-        >
-          + Adicionar Reserva de Teste
-        </button>
-      </div>
-
-      <div className="flex flex-col gap-3">
-        {bookings.length === 0 && !error && (
-          <p className="rounded-lg border border-dashed border-gray-300 bg-white p-10 text-center text-gray-500">
-            Nenhuma reserva agendada no momento.
-          </p>
-        )}
-
-        {bookings.map((b) => (
-          <div
-            key={b.id}
-            className="flex items-center justify-between rounded-lg bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-          >
-            <div className="flex flex-col gap-1.5">
-              <span className="font-semibold text-gray-900">👤 {b.name}</span>
-              <span className="text-sm text-gray-500">
-                🏢 Apto {b.apartment} <span className="text-gray-300">•</span> 🗓️ {b.date}
-              </span>
-            </div>
-            <button
-              onClick={() => removeBooking(b.id)}
-              className="rounded-md border border-red-600 px-3 py-1.5 font-medium text-red-600 transition hover:bg-red-600 hover:text-white"
-            >
-              Excluir
-            </button>
-          </div>
-        ))}
-      </div>
+      <DayList
+        days={getRollingDays()}
+        bookings={bookings}
+        addBooking={addBooking}
+        removeBooking={removeBooking}
+      />
     </div>
   )
 }
