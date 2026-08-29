@@ -3,4 +3,5 @@ export type Booking = {
     date: string;
     apartment: string;
     name: string;
+    createdBy?: string;
 }

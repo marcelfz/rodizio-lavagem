@@ -3,7 +3,7 @@ import { DayList } from './components/DayList'
 import { getRollingDays } from './utils/dates'
 
 export default function App() {
-  const { bookings, loading, error, addBooking, removeBooking } = useBookings()
+  const { bookings, loading, error, currentUserId, addBooking, removeBooking } = useBookings()
 
   if (loading) {
     return (
@@ -32,6 +32,7 @@ export default function App() {
       <DayList
         days={getRollingDays()}
         bookings={bookings}
+        currentUserId={currentUserId}
         addBooking={addBooking}
         removeBooking={removeBooking}
       />

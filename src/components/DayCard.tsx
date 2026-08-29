@@ -6,6 +6,7 @@ type DayCardProps = {
   date: Date
   booking: Booking | null
   isFormOpen: boolean
+  canDelete: boolean
   onOpenForm: () => void
   onCancelForm: () => void
   onRemove: () => void
@@ -42,7 +43,7 @@ function isToday(date: Date): boolean {
   return toDateKey(date) === toDateKey(today)
 }
 
-export function DayCard({ date, booking, isFormOpen, onOpenForm, onCancelForm, onRemove, onSubmit }: DayCardProps) {
+export function DayCard({ date, booking, isFormOpen, canDelete, onOpenForm, onCancelForm, onRemove, onSubmit }: DayCardProps) {
   const dateKey = toDateKey(date)
   const weekday = WEEKDAYS[date.getDay()]
   const dayNumber = date.getDate()
@@ -74,12 +75,14 @@ export function DayCard({ date, booking, isFormOpen, onOpenForm, onCancelForm, o
             <span className="font-medium text-gray-900">👤 {booking.name}</span>
             <span className="text-sm text-gray-500">🏢 Apto {booking.apartment}</span>
           </div>
-          <button
-            onClick={onRemove}
-            className="rounded-md border border-red-600 px-3 py-1.5 font-medium text-red-600 transition hover:bg-red-600 hover:text-white"
-          >
-            Excluir
-          </button>
+          {canDelete && (
+            <button
+              onClick={onRemove}
+              className="rounded-md border border-red-600 px-3 py-1.5 font-medium text-red-600 transition hover:bg-red-600 hover:text-white"
+            >
+              Excluir
+            </button>
+          )}
         </div>
       ) : isFormOpen ? (
         <BookingForm
